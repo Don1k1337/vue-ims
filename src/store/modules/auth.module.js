@@ -20,9 +20,6 @@ export default {
     actions: {
       async login({ commit }, payload) {
           commit('SET_TOKEN', 'Test token')
-      },
-      async logout({commit}) {
-          commit('LOGOUT')
       }
     },
     getters: {

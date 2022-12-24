@@ -30,15 +30,15 @@ const routes = [
       auth: false
     }
   },
-  {
-    path: '/logout',
-    name: 'Logout',
-    component: () => import('../views/Auth.vue'),
-    meta: {
-      layout: 'auth',
-      auth: false
-    }
-  }
+  // {
+  //   path: '/logout',
+  //   name: 'Logout',
+  //   component: () => import('../views/Auth.vue'),
+  //   meta: {
+  //     layout: 'auth',
+  //     auth: false
+  //   }
+  // }
 ]
 
 const router = createRouter({

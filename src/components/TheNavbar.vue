@@ -12,15 +12,28 @@
         <router-link to="#">Info</router-link>
       </li>
       <li>
-        <router-link to="/logout">Logout</router-link>
+        <router-link to="#" @click.prevent="logout">Logout</router-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import {useRouter} from "vue-router";
+import {useStore} from "vuex";
+
 export default {
-  name: "TheNavbar"
+  name: "TheNavbar",
+  setup() {
+    const router = useRouter();
+    const store = useStore();
+    return {
+      logout: () => {
+        store.commit('auth/LOGOUT')
+        router.push('/login')
+      }
+    }
+  }
 }
 </script>
 
