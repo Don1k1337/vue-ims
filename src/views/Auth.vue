@@ -14,8 +14,8 @@
       <small v-if="pError">{{ pError }}</small>
     </div>
 
-    <button class="btn primary" type="submit" :disabled="isSubmitting || isTooManyAtempts">Login</button>
-    <div class="text-danger" v-if="isTooManyAtempts">
+    <button class="btn primary" type="submit" :disabled="isSubmitting || isTooManyAttempts">Login</button>
+    <div class="text-danger" v-if="isTooManyAttempts">
       You performed too many attempts, please try again later
     </div>
   </form>
