@@ -9,10 +9,10 @@
         <router-link to="/help">Helper</router-link>
       </li>
       <li>
-        <router-link to="#">Info</router-link>
+        <router-link to="/info">Info</router-link>
       </li>
       <li>
-        <router-link to="#" @click.prevent="logout">Logout</router-link>
+        <router-link to="/logout" @click.prevent="logout">Logout</router-link>
       </li>
     </ul>
   </nav>
