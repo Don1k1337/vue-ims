@@ -15,7 +15,7 @@ export default {
   setup() {
     const store = useStore()
     const TITLE_MAP = {
-      primary: 'Successfully logged in!',
+      primary: 'Success!',
       danger: 'Error!',
       warning: 'Warning!'
     }

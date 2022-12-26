@@ -1,6 +1,6 @@
 import { createStore, createLogger } from 'vuex'
 import auth from "../store/modules/auth.module"
-
+import request from '../store/modules/request.module'
 const plugins = []
 // checking logger
 if(process.env.NODE_ENV === 'development') {
@@ -31,6 +31,7 @@ export default createStore({
     }
   },
   modules: {
-    auth
+    auth,
+    request
   }
 })

@@ -12,7 +12,7 @@
         <router-link to="/info">Info</router-link>
       </li>
       <li>
-        <router-link to="/logout" @click.prevent="logout">Logout</router-link>
+        <a v-bind:href="logout" @click.prevent="logout" >Logout</a>
       </li>
     </ul>
   </nav>
