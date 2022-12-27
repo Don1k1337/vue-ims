@@ -4,6 +4,7 @@
     <template #header>
       <button class="btn primary" @click="modal = true">Create</button>
     </template>
+    <request-filter v-model="filter"/>
     <request-table :requests="requests"></request-table>
 
     <teleport to="body">
@@ -22,6 +23,7 @@ import RequestModal from "../components/requests/RequestModal.vue";
 import {ref, computed, onMounted} from "vue";
 import {useStore} from "vuex";
 import AppLoader from "../components/ui/AppLoader.vue";
+import RequestFilter from "../components/requests/RequestFilter.vue";
 
 export default {
   name: 'Home',
@@ -29,17 +31,31 @@ export default {
     const modal = ref(false)
     const store = useStore()
     const loading = ref(false)
-
+    const filter = ref({});
     onMounted(async () => {
       loading.value = true
       await store.dispatch('request/load')
       loading.value = false
     })
-    const requests = computed(() => store.getters['request/requests'])
+    const requests = computed(() => store.getters['request/requests']
+        .filter(request => {
+          if (filter.value.name) {
+            return request.name.includes(filter.value.name)
+          }
+          return request
+        })
+        .filter(request => {
+          if (filter.value.status) {
+            return filter.value.status === request.status
+          }
+          return request
+        })
+    )
     return {
       modal,
       requests,
-      loading
+      loading,
+      filter
     }
   },
   components: {
@@ -47,7 +63,8 @@ export default {
     RequestTable,
     AppPage,
     AppModal,
-    RequestModal
+    RequestModal,
+    RequestFilter
   }
 }
 </script>
