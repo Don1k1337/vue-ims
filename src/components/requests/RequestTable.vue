@@ -15,9 +15,11 @@
     <tr v-for="(req, idx) in requests" :key="req.id">
       <td>{{ idx + 1 }}</td>
       <td>{{ req.name }}</td>
-      <td>{{ req.amount }}</td>
+      <td>{{ currency(req.amount) }}</td>
       <td>{{ req.phone }}</td>
-      <td>{{ req.status }}</td>
+      <td>
+        <app-status :type="req.status" />
+      </td>
       <!--
       Actions will be here soon
              <td>
@@ -32,9 +34,16 @@
 </template>
 
 <script>
+import {currency} from "../../utils/currency";
+import AppStatus from "../ui/AppStatus.vue";
+
 export default {
   name: "RequestTable",
-  props: ['requests']
+  props: ['requests'],
+  setup() {
+    return {currency}
+  },
+  components: {AppStatus}
 }
 </script>
 

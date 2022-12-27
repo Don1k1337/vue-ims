@@ -22,7 +22,7 @@ const routes = [
     }
   },
   {
-    path: '/login',
+    path: '/auth',
     name: 'Auth',
     component: () => import('../views/Auth.vue'),
     meta: {
@@ -40,12 +40,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const requiredAuth = to.meta.auth
+  const requireAuth = to.meta.auth
 
-  if (requiredAuth && store.getters['auth/isAuthenticated']) {
+  if (requireAuth && store.getters['auth/isAuthenticated']) {
     next()
-  } else if (requiredAuth && !store.getters['auth/isAuthenticated']) {
-    next('/login?message=auth')
+  } else if (requireAuth && !store.getters['auth/isAuthenticated']) {
+    next('/auth?message=auth')
   } else {
     next()
   }
