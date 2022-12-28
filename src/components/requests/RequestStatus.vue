@@ -1,7 +1,7 @@
 <template>
   <select v-model="status">
-    <option disabled selected>Choose status</option>
-    <option v-for="option in options" :value="option.value">{{ option.text }}</option>
+    <option>Choose status</option>
+    <option v-for="option in options" :value="option.text">{{ option.text }}</option>
   </select>
 </template>
 
@@ -13,7 +13,7 @@ export default {
       status: '',
       options: [
         {value: 'done', text: 'Done'},
-        {value: 'cancelled', text: 'Canceled'},
+        {value: 'cancelled', text: 'Cancelled'},
         {value: 'active', text: 'Active'},
         {value: 'pending', text: 'Pending'}
       ]

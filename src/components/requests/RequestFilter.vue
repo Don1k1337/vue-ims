@@ -12,7 +12,7 @@
 
 <script>
 import RequestStatus from "./RequestStatus.vue";
-import { ref, watch, computed } from 'vue';
+import {ref, watch, computed} from 'vue';
 export default {
   name: "RequestFilter",
   emits: ['update:modelValue'],
@@ -20,16 +20,13 @@ export default {
   setup(_, {emit}) {
     const name = ref();
     const status = ref();
-
     watch([name, status], values => {
       emit('update:modelValue', {
         name: values[0],
         status: values[1]
       })
     })
-
     const isActive = computed(() => name.value || status.value)
-
     return {
       name,
       status,

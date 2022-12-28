@@ -15,19 +15,17 @@
     <tr v-for="(req, idx) in requests" :key="req.id">
       <td>{{ idx + 1 }}</td>
       <td>{{ req.name }}</td>
-      <td>{{ currency(req.amount) }}</td>
       <td>{{ req.phone }}</td>
+      <td>{{ currency(req.amount) }}</td>
       <td>
-        <app-status :type="req.status" />
+        <app-status :type="req.status"/>
       </td>
-      <!--
-      Actions will be here soon
-             <td>
-                <router-link v-slot="{navigate}" custom :to="{name: 'Request', params: {id: req.id}}">
-                  <button class="btn primary" @click="navigate">Open</button>
-                </router-link>
-              </td>
-       -->
+
+      <td>
+        <router-link v-slot="{navigate}" custom :to="{name: 'Request', params: {id: req.id}}">
+          <button class="btn" @click="navigate">Open</button>
+        </router-link>
+      </td>
     </tr>
     </tbody>
   </table>

@@ -33,12 +33,24 @@ export default {
                 }, {root: true})
             }
         },
-        async load({ commit, dispatch }) {
+        async load({commit, dispatch}) {
             try {
                 const token = store.getters['auth/token']
                 const {data} = await axios.get(`/request.json?auth=${token}`)
                 const requests = Object.keys(data).map(id => ({...data[id], id}))
                 commit('setRequests', requests)
+            } catch (e) {
+                dispatch('setMessage', {
+                    value: e.message,
+                    type: 'danger'
+                }, {root: true})
+            }
+        },
+        async loadById({ commit, dispatch }, id) {
+            try {
+                const token = store.getters['auth/token']
+                const {data} = await axios.get(`/request/${id}.json?auth=${token}`)
+                return data
             } catch (e) {
                 dispatch('setMessage', {
                     value: e.message,
