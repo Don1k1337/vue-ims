@@ -1,11 +1,12 @@
 <template>
   <select v-model="status">
-    <option>Choose status</option>
-    <option v-for="option in options" :value="option.text">{{ option.text }}</option>
+    <option disabled>Choose status</option>
+    <option v-for="option in options" :value="option.value">{{ option.text }}</option>
   </select>
 </template>
 
 <script>
+
 export default {
   name: "RequestStatus",
   setup() {
