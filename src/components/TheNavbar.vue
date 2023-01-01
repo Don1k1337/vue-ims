@@ -9,7 +9,7 @@
         <router-link to="/help">Helper</router-link>
       </li>
       <li>
-        <router-link to="/info">Info</router-link>
+        <a href="#" @click.prevent="openSidebar">Info</a>
       </li>
       <li>
         <a v-bind:href="logout" @click.prevent="logout" >Logout</a>
@@ -31,7 +31,8 @@ export default {
       logout: () => {
         store.commit('auth/LOGOUT')
         router.push('/auth')
-      }
+      },
+      openSidebar: () => store.commit('openSidebar')
     }
   }
 }
