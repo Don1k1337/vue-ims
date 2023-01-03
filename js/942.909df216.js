@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkvue_ims_app"]=self["webpackChunkvue_ims_app"]||[]).push([[942],{45942:(e,s,a)=>{a.r(s),a.d(s,{default:()=>h});var u=a(73396),n={class:"help"},p=(0,u._)("h1",null,"This is an about page",-1),i=[p];function r(e,s){return(0,u.wg)(),(0,u.iD)("div",n,i)}var l=a(40089);const t={},c=(0,l.Z)(t,[["render",r]]),h=c}}]);
-//# sourceMappingURL=942.909df216.js.map
