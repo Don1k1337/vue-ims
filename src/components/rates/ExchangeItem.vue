@@ -1,30 +1,46 @@
 <template>
   <div class="card">
-    <div class="card-title">
-      <p>Amount value: <small>{{amount}}</small></p>
-      <p>Convert from: <small>{{from}}</small></p>
-      <p>Convert to: <small>{{to}}</small></p>
-      <p v-if="result">Result: <small>{{result}}</small></p>
+    <div class="form-control">
+      <label for="amount">Amount:</label>
+      <input type="number" min="1" id="amount" v-model.number="amount">
     </div>
-    <button @click="convert">Convert</button>
+    <div class="form-control">
+      <label for="from">From:</label>
+      <select id="from" v-model="from">
+        <option disabled>Choose a currency</option>
+        <option value="RUB">Russian Ruble</option>
+        <option value="USD">USD</option>
+        <option value="EUR">Euro</option>
+        <option value="KGS">Kyrgyzstani Som</option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label for="to">To:</label>
+      <select id="to" v-model="to">
+        <option disabled>Choose a currency</option>
+        <option value="RUB">Russian Ruble</option>
+        <option value="USD">USD</option>
+        <option value="EUR">Euro</option>
+        <option value="KGS">Kyrgyzstani Som</option>
+      </select>
+    </div>
+    <p v-if="result">Result: <small>{{ result }}</small></p>
+    <button class="btn primary" @click="convert">Convert</button>
   </div>
 </template>
 
 <script>
-
 import fetchData, {resultedValue} from "../../fetch/exchangeRequest";
 import {ref} from "vue";
-
 export default {
   name: "ExchangeRate",
   setup() {
-    // Mock data
-    const to = 'RUB'
-    const from = 'KGS'
-    const amount = 1000
+    const to = ref(null)
+    const from = ref(null)
+    const amount = ref(null)
     const result = ref(null)
     const convert = async () => {
-      await fetchData(to, from, amount);
+      await fetchData(to.value, from.value, amount.value);
       result.value = resultedValue[0].result
     };
     return {
@@ -34,12 +50,6 @@ export default {
       convert,
       result
     }
-
   }
-
 }
 </script>
-
-<style scoped>
-
-</style>
