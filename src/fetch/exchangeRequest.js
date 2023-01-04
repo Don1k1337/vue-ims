@@ -1,16 +1,22 @@
-const exchangeHeaders = new Headers();
+import axios from "axios";
+
 const apiKey = process.env.VUE_APP_EXC_KEY
 const apiUrl = process.env.VUE_APP_EXC_URL
-exchangeHeaders.append("apikey", apiKey);
-const requestOptions = {
-    method: 'GET',
-    redirect: 'follow',
-    headers: exchangeHeaders
-};
-const fetchData = (to, from, amount) => {
-    fetch(`${apiUrl}?to=${to}&from=${from}&amount=${amount}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+export const resultedValue = []
+const fetchData = async (to, from, amount) => {
+    try {
+        const response = await axios({
+            method: 'get',
+            url: `${apiUrl}?to=${to}&from=${from}&amount=${amount}`,
+            headers: {
+                apiKey: apiKey
+            }
+        })
+        const resultedObj = await response.data
+        resultedValue.push(resultedObj)
+    } catch(e) {
+        console.log(e.message)
+    }
 }
+
 export default fetchData

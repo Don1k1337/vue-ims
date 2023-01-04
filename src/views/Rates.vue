@@ -1,4 +1,6 @@
 <template>
+  <app-message />
+
 <app-page back title="Rates">
 <exchange-item>
 
@@ -9,10 +11,11 @@
 <script>
 import AppPage from "../components/ui/AppPage.vue";
 import ExchangeItem from "../components/rates/ExchangeItem.vue";
+import AppMessage from "../components/ui/AppMessage.vue";
 
 export default {
   name: "Rates",
-  components: {ExchangeItem, AppPage}
+  components: {ExchangeItem, AppPage, AppMessage}
 }
 </script>
 
