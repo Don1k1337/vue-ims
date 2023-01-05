@@ -1,5 +1,6 @@
 <template>
-  <div class="card">
+  <app-loader v-if="loading" />
+  <div v-if="!loading">
     <div class="form-control">
       <label for="amount">Amount:</label>
       <input type="number" min="1" id="amount" v-model.number="amount">
@@ -32,6 +33,7 @@
 <script>
 import fetchData, {resultedValue} from "../../fetch/exchangeRequest";
 import {ref} from "vue";
+import AppLoader from "../ui/AppLoader.vue";
 export default {
   name: "ExchangeRate",
   setup() {
@@ -39,17 +41,22 @@ export default {
     const from = ref(null)
     const amount = ref(null)
     const result = ref(null)
+    const loading = ref(false)
     const convert = async () => {
+      loading.value = true
       await fetchData(to.value, from.value, amount.value);
       result.value = resultedValue[0].result
+      loading.value = false
     };
     return {
       to,
       from,
       amount,
       convert,
-      result
+      result,
+      loading
     }
-  }
+  },
+  components: {AppLoader}
 }
 </script>
