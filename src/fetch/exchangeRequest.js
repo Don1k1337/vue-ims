@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const apiKey = process.env.VUE_APP_EXC_KEY
 const apiUrl = process.env.VUE_APP_EXC_URL

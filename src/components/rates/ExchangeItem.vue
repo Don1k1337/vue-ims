@@ -1,6 +1,4 @@
 <template>
-  <app-loader v-if="loading" />
-  <div v-if="!loading">
     <div class="form-control">
       <label for="amount">Amount:</label>
       <input type="number" min="1" id="amount" v-model.number="amount">
@@ -27,13 +25,13 @@
     </div>
     <p v-if="result">Result: <small>{{ result }}</small></p>
     <button class="btn primary" @click="convert">Convert</button>
-  </div>
 </template>
 
 <script>
 import fetchData, {resultedValue} from "../../fetch/exchangeRequest";
 import {ref} from "vue";
 import AppLoader from "../ui/AppLoader.vue";
+import AppPage from "../ui/AppPage.vue";
 export default {
   name: "ExchangeRate",
   setup() {
@@ -57,6 +55,6 @@ export default {
       loading
     }
   },
-  components: {AppLoader}
+  components: {AppPage, AppLoader}
 }
 </script>

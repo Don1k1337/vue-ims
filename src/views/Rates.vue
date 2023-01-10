@@ -1,7 +1,7 @@
 <template>
   <app-message />
-
-<app-page back title="Rates">
+<app-loader v-if="loading"/>
+<app-page back v-else title="Rates">
 <exchange-item>
 
 </exchange-item>
@@ -12,10 +12,12 @@
 import AppPage from "../components/ui/AppPage.vue";
 import ExchangeItem from "../components/rates/ExchangeItem.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
+import AppLoader from "../components/ui/AppLoader.vue";
 
 export default {
   name: "Rates",
-  components: {ExchangeItem, AppPage, AppMessage}
+  props: ['loading'],
+  components: {AppLoader, ExchangeItem, AppPage, AppMessage}
 }
 </script>
 
