@@ -30,7 +30,6 @@
 <script>
 import fetchData, {resultedValue} from "../../fetch/exchangeRequest";
 import {ref} from "vue";
-import AppLoader from "../ui/AppLoader.vue";
 import AppPage from "../ui/AppPage.vue";
 export default {
   name: "ExchangeRate",
@@ -55,6 +54,6 @@ export default {
       loading
     }
   },
-  components: {AppPage, AppLoader}
+  components: {AppPage}
 }
 </script>
