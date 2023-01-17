@@ -1,5 +1,7 @@
 <template>
-  <h4 v-if="requests.length === 0" class="text-center">No requests available</h4>
+  <div v-if="requestsChecker">
+    <h4 class="text-center">No requests available</h4>
+  </div>
   <table v-else class="table">
     <thead>
     <tr>
@@ -35,11 +37,17 @@
 import {currency} from "../../utils/currency";
 import AppStatus from "../ui/AppStatus.vue";
 
+
 export default {
   name: "RequestTable",
   props: ['requests'],
   setup() {
     return {currency}
+  },
+  computed: {
+    requestsChecker() {
+      return this.requests.length === 0;
+    }
   },
   components: {AppStatus}
 }
